@@ -1,0 +1,22 @@
+<ul>
+  {% for p in personajes %}
+      <li>{{ p.nombre }} - Clase: {{ p.clase }} - Nivel: {{ p.nivel }} - Vida: {{ p.vida }}</li>
+  {% endfor %}
+</ul>
+
+<h2>Crear Nuevo Personaje</h2>
+<form action="/personajes" method="POST">
+  <label>Nombre:</label>
+  <input type="text" name="nombre">
+  
+  <label>Clase:</label>
+  <input type="text" name="clase">
+  
+  <label>Nivel:</label>
+  <input type="number" name="nivel">
+
+ <label>Vida:</label>
+  <input type="number" name="vida">
+
+  <button type="submit">Guardar Personaje</button>
+</form>
