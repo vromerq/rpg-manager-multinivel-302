@@ -1,22 +1,45 @@
-<ul>
-  {% for p in personajes %}
-      <li>{{ p.nombre }} - Clase: {{ p.clase }} - Nivel: {{ p.nivel }} - Vida: {{ p.vida }}</li>
-  {% endfor %}
-</ul>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>RPG Manager - Personajes</title>
+</head>
+<body>
 
-<h2>Crear Nuevo Personaje</h2>
-<form action="/personajes" method="POST">
-  <label>Nombre:</label>
-  <input type="text" name="nombre">
-  
-  <label>Clase:</label>
-  <input type="text" name="clase">
-  
-  <label>Nivel:</label>
-  <input type="number" name="nivel">
+  <h2>Lista de Personajes</h2>
+  <ul>
+    {% for p in personajes %}
+        <li>{{ p.nombre }} - Clase: {{ p.clase }} - Nivel: {{ p.nivel }} - Vida: {{ p.vida }}</li>
+    {% endfor %}
+  </ul>
 
- <label>Vida:</label>
-  <input type="number" name="vida">
+  {% if errores %}
+    <div style="color: red; border: 1px solid red; padding: 10px; margin-bottom: 15px; background-color: #ffe6e6;">
+      <strong>¡Atención! Ocurrieron los siguientes errores:</strong>
+      <ul>
+        {% for error in errores %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
 
-  <button type="submit">Guardar Personaje</button>
-</form>
+  <h2>Crear Nuevo Personaje</h2>
+  <form action="/personajes" method="POST">
+    <label>Nombre:</label>
+    <input type="text" name="nombre"><br><br>
+    
+    <label>Clase:</label>
+    <input type="text" name="clase"><br><br>
+    
+    <label>Nivel:</label>
+    <input type="number" name="nivel"><br><br>
+
+    <label>Vida:</label>
+    <input type="number" name="vida"><br><br>
+
+    <button type="submit">Guardar Personaje</button>
+  </form>
+
+</body>
+</html>
