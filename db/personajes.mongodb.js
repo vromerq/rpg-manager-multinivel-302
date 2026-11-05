@@ -7,7 +7,7 @@
 
 // Archivos
 
-// - `Personaje.json`: documento JSON con la información del personaje Kael.
+// - `Personaje.json`: documento JSON con los personajes del RPG.
 // - `db/personajes.mongodb.js`: consultas e instrucciones de MongoDB, si se incluye este archivo.
 
 
