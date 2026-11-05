@@ -8,10 +8,12 @@
 
   <h2>Lista de Personajes</h2>
   <ul>
-    {% for p in personajes %}
-        <li>{{ p.nombre }} - Clase: {{ p.clase }} - Nivel: {{ p.nivel }} - Vida: {{ p.vida }}</li>
-    {% endfor %}
-  </ul>
+  {% for p in personajes %}
+    <li>{{ p.nombre }} - Clase: {{ p.clase }} - Nivel: {{ p.nivel }} - Vida: {{ p.vida }}</li>
+  {% else %}
+    <li>No hay personajes registrados.</li>
+  {% endfor %}
+</ul>
 
   {% if errores %}
     <div style="color: red; border: 1px solid red; padding: 10px; margin-bottom: 15px; background-color: #ffe6e6;">
