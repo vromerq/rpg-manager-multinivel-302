@@ -1,0 +1,51 @@
+// MongoDB
+// MongoDB
+
+// Persistencia - Semana 7
+
+// Este repositorio contiene la actividad práctica de MongoDB para la gestión de personajes de un RPG.
+
+// Archivos
+
+// - `Personaje.json`: documento JSON con la información del personaje Kael.
+// - `db/personajes.mongodb.js`: consultas e instrucciones de MongoDB, si se incluye este archivo.
+
+
+use('rpg_manager');
+ 
+db.getCollection('personajes').insertOne({
+  nombre: "Aether Noctis",
+  clase: "Guerrero",
+  nivel: 30,
+  vida: 50,
+  oro: 2200,
+  inventario: [
+    { item: "Mandoble de Obsidiana", cantidad: 1 },
+    { item: "Elixir de Vitalidad", cantidad: 4 }
+  ]
+});
+ 
+db.personajes.findOne({ nombre: "Aether Noctis" });
+ 
+db.personajes.insertMany([
+  { nombre: "Ragnor", clase: "Guerrero", nivel: 16, vida: 45, ataque: 28, oro: 530.75, inventario: [{ item: "Martillo de Guerra", cantidad: 1 }, { item: "Escudo de Roble", cantidad: 1 }], misiones: [{ titulo: "Asalto al Campamento Orco", dificultad: "media", recompensa: 130, estado: "completada" }] },
+  { nombre: "Isolde", clase: "Mago", nivel: 17, vida: 25, mana: 220, ataque: 38, oro: 1450.00, inventario: [{ item: "Cetro de Escarcha", cantidad: 1 }, { item: "Poción de Maná", cantidad: 4 }], misiones: [{ titulo: "El Códice Perdido", dificultad: "media", recompensa: 170, estado: "completada" }] },
+  { nombre: "Valeria", clase: "Guerrero", nivel: 21, vida: 50, ataque: 34, oro: 970.00, inventario: [{ item: "Lanza de Acero", cantidad: 1 }], misiones: [{ titulo: "Guardia de la Fortaleza", dificultad: "dificil", recompensa: 250, estado: "completada" }] },
+  { nombre: "Zephyr", clase: "Mago", nivel: 9, vida: 20, mana: 140, ataque: 26, oro: 280.00, inventario: [{ item: "Anillo Elemental", cantidad: 1 }], misiones: [] },
+  { nombre: "Lyra", clase: "Arquero", nivel: 19, vida: 35, precision: 97, ataque: 27, oro: 780.00, inventario: [{ item: "Arco Élfico", cantidad: 1 }, { item: "Flechas de Plata", cantidad: 40 }], misiones: [{ titulo: "Vigía de la Montaña", dificultad: "media", recompensa: 140, estado: "completada" }] },
+  { nombre: "Tobiah", clase: "Arquero", nivel: 6, vida: 30, precision: 82, ataque: 15, oro: 120.00, inventario: [], misiones: [] },
+  { nombre: "Morgath", clase: "Mago", nivel: 24, vida: 30, mana: 300, ataque: 45, oro: 3100.00, inventario: [{ item: "Grimorio del Abismo", cantidad: 1 }], misiones: [{ titulo: "La Torre del Hechicero", dificultad: "legendaria", recompensa: 1200, estado: "aceptada" }] }
+]);
+ 
+ 
+db.personajes.updateOne(
+  { nombre: "Ragnor" },
+  { $inc: { oro: 300 } }
+);
+ 
+ 
+ 
+db.personajes.findOne(
+  { nombre: "Ragnor" },
+  { nombre: 1, oro: 1, _id: 0 }
+);
