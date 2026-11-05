@@ -1,3 +1,5 @@
+
+CREATE DATABASE IF NOT EXISTS rpg_manager;
 USE rpg_manager;
 
 CREATE TABLE clase (
